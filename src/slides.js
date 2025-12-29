@@ -101,7 +101,5 @@ export const slides = [
       '完了するとテキストファイルがダウンロード可能に'
     ],
     image: '/assets/kirinuki_upload.png',
-    icon: UploadCloud,
   }
-];
 ];
