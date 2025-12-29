@@ -48,6 +48,16 @@ const Linkify = ({ text }) => {
     );
 };
 
+// Helper to resolve asset paths for GitHub Pages
+const resolvePath = (path) => {
+    if (!path) return path;
+    if (path.startsWith('http')) return path; // Ignore external links
+    const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+        ? import.meta.env.BASE_URL.slice(0, -1)
+        : import.meta.env.BASE_URL;
+    return path.startsWith('/') ? `${baseUrl}${path}` : `${baseUrl}/${path}`;
+};
+
 export const Slide = ({ slide }) => {
     const Icon = slide.icon;
 
@@ -189,13 +199,13 @@ export const Slide = ({ slide }) => {
                                             justifyContent: 'center',
                                             background: 'rgba(0,0,0,0.2)'
                                         }}>
-                                            <img src={img} alt={`Slide visual ${idx}`} style={{ width: '100%', height: '100%', objectFit: slide.imageObjectFit || 'cover' }} />
+                                            <img src={resolvePath(img)} alt={`Slide visual ${idx}`} style={{ width: '100%', height: '100%', objectFit: slide.imageObjectFit || 'cover' }} />
                                         </div>
                                     ))}
                                 </div>
                             ) : slide.image ? (
                                 <div style={{ position: 'relative', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                    <img src={slide.image} alt="Slide visual" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+                                    <img src={resolvePath(slide.image)} alt="Slide visual" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
 
                                     {/* Specific Privacy Masks */}
                                     {slide.privacyMask && (
