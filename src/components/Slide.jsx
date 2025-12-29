@@ -28,18 +28,29 @@ const Linkify = ({ text }) => {
         <>
             {parts.map((part, i) => {
                 if (part.match(urlRegex)) {
+                    let url = part;
+                    let suffix = '';
+
+                    // Remove trailing ')' if present (common when URL is inside parentheses)
+                    if (url.endsWith(')')) {
+                        url = url.slice(0, -1);
+                        suffix = ')';
+                    }
+
                     return (
-                        <a
-                            key={i}
-                            href={part}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="slide-link"
-                            style={{ color: 'var(--accent-secondary)', textDecoration: 'underline', wordBreak: 'break-all' }}
-                            onClick={(e) => e.stopPropagation()} // Prevent slide navigation if click event bubbles
-                        >
-                            {part}
-                        </a>
+                        <React.Fragment key={i}>
+                            <a
+                                href={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="slide-link"
+                                style={{ color: 'var(--accent-secondary)', textDecoration: 'underline', wordBreak: 'break-all' }}
+                                onClick={(e) => e.stopPropagation()} // Prevent slide navigation if click event bubbles
+                            >
+                                {url}
+                            </a>
+                            {suffix}
+                        </React.Fragment>
                     );
                 }
                 return part;
