@@ -152,7 +152,7 @@ strong {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   display: flex;
-  alignItems: center;
+  align-items: center;
 }
 
 /* Mobile / Responsive Overrides */
