@@ -101,5 +101,28 @@ export const slides = [
       '完了するとテキストファイルがダウンロード可能に'
     ],
     image: '/assets/kirinuki_upload.png',
+  },
+  {
+    id: 14,
+    type: 'image-split',
+    title: 'CapCut マイプリセット設定',
+    content: [
+      '【タイトル (2行)】',
+      'フォント: 9, スケール: 118%, 位置Y: 906',
+      'ストローク: #f0ff00 (厚み10)',
+      '発光: 右側 #f0ff00',
+      '',
+      '【イベント名】',
+      'フォント: 15, スケール: 73%, 位置Y: 1444',
+      '発光: 右側 #a74100',
+      'シャドウ: #ff802e (不透明80%, ぼかし30%, 距離13)'
+    ],
+    images: [
+      '/assets/capcut_preview.png',
+      '/assets/capcut_settings.png'
+    ],
+    imageGridCols: 1,
+    imageObjectFit: 'contain',
+    icon: Layers,
   }
 ];
